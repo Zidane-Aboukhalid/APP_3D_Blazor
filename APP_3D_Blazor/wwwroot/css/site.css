@@ -1,0 +1,146 @@
+html, body {
+    height: 100%;
+}
+
+/* CSS Index */
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: "Lato", sans-serif;
+}
+
+#status-card {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+    width: 300px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+    z-index: 10;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+}
+
+#showNavBar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+}
+
+/* CSS Editor */
+
+.full-page {
+    height: 100%;
+    margin: 0;
+}
+
+.main-editor {
+    height: 100%;
+}
+
+.menu-editor {
+    height: 100%;
+}
+
+#ui-container {
+    position: relative;
+    right: 0;
+    bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 10px;
+}
+
+    #ui-container button {
+        margin: 5px;
+        padding: 10px 15px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.8);
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+        #ui-container button:hover {
+            background-color: rgba(255, 255, 255, 1);
+            transform: scale(1.05);
+        }
+
+.nav-link {
+    color: #818181 !important;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #f8f9fa !important;
+}
+
+.bg-nav-cart {
+    background: #fff;
+}
+
+nav.bg-light {
+    background-color: #efe6e6 !important;
+}
+
+#btn-group-container {
+    position: absolute;
+    top: 3%;
+    left: 20%;
+}
+
+    #btn-group-container button {
+        color: #fff;
+    }
