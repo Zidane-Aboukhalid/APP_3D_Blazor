@@ -1,0 +1,45 @@
+﻿@page "/Google_Paps"
+@using APP_3D_Blazor.Helper
+@using APP_3D_Blazor.models
+@inject IJSRuntime JS
+
+
+<PageTitle>Google Maps</PageTitle>
+<div class="row p-1 w-100 h-100 p-1">
+	<div class="col-6" id="@Element3DId" ></div>
+	<div class="col-6" id="@Element2DId" ></div>
+</div>
+
+@code {
+	[Parameter]
+	public string Element3DId { get; set; } = "map3D";
+	[Parameter]
+	public string Element2DId { get; set; } = "map2D";
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (firstRender)
+		{
+			await JS.ImportCustormGoogeleMapsJsAsync();
+			await JS.LoadGooglemapsApiAsync(new GoogleMapsLoadConfig
+			{
+					ApiKey = "AIzaSyD5J_bnYecGUThFP6ULtzE07LncgMCXpIk",
+					Version = "alpha"
+			});
+			await JS.InitGoogleMaps3DAsync(new GoogleMapOptions3D(
+				ElementId: Element3DId,
+				MapId: "db0f912a7428b4d6",
+				Center: new GoogleMapCoordinate3D(33.5923311, -7.6165230, 50),
+				heading: -90,
+				tilt: 90,
+				defaultLabelsDisabled: true
+			));
+			await JS.InitGoogleMaps2DAsync(new GoogleMapOptions2D(
+			elementId: Element2DId,
+			mapId: "db0f912a7428b4d6",
+			center: new GoogleMapCoordinate2D(33.5906869, -7.6364839),
+			zoom: 59
+			));
+		}
+	}
+}
