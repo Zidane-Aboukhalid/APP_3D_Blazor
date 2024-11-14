@@ -1,0 +1,39 @@
+﻿@page "/Google_Map_v2"
+@using APP_3D_Blazor.Helper
+@using APP_3D_Blazor.models
+@inject IJSRuntime JS
+
+
+<PageTitle>Google Maps v2</PageTitle>
+<div class="row p-1 w-100 h-100 p-1">
+	<div id="@Element3DId" class="@Element3DId"></div>
+</div>
+
+@code {
+	[Parameter]
+	public string Element3DId { get; set; } = "map";
+
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (firstRender)
+		{
+			await JS.ImportCustormGoogeleMapsJsAsync();
+			await JS.LoadGooglemapsApiAsync(new GoogleMapsLoadConfig
+			{
+					ApiKey = "AIzaSyD5J_bnYecGUThFP6ULtzE07LncgMCXpIk",
+					Version = "weekly"
+			});
+			await JS.InitGoogleMaps3D_V2Async(new GoogleMapOptions3D(
+				ElementId: Element3DId,
+				MapId: "15431d2b469f209e",
+				Center: new GoogleMapCoordinate3D(33.5906703, -7.6365182, 0),
+				heading: 0,
+				tilt: 0,
+				Zoom: 18,
+				defaultLabelsDisabled: true
+			));
+			
+		}
+	}
+}

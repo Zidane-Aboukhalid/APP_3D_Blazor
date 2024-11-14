@@ -21,4 +21,10 @@
 		<Content Include="models_Object3d\table-v1.glb" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Content Update="Pages\Google_Map_v2.razor">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	  </Content>
+	</ItemGroup>
+
 </Project>

@@ -7,7 +7,7 @@ public static class Extensions
 {
     public static async Task ImportCustormGoogeleMapsJsAsync(this IJSRuntime jSRuntime)
     {
-        await jSRuntime.InvokeVoidAsync("import", "./main/custom-google-maps.js");
+        await jSRuntime.InvokeAsync<IJSObjectReference>("import", "./main/custom-google-maps.js");
     }
     public static ValueTask LoadGooglemapsApiAsync(this IJSRuntime jSRuntime, GoogleMapsLoadConfig config)
     {
@@ -29,4 +29,8 @@ public static class Extensions
     {
         return jSRuntime.InvokeVoidAsync("CustomGoogleMapsJs.initMapa3Dsync", mapOptions);
     }
+	public static ValueTask InitGoogleMaps3D_V2Async(this IJSRuntime jSRuntime, GoogleMapOptions3D mapOptions)
+	{
+		return jSRuntime.InvokeVoidAsync("CustomGoogleMapsJs.initMapa3D_V2sync", mapOptions);
+	}
 }
