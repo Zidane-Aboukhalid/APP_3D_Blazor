@@ -107,10 +107,7 @@ export class CustomGoogleMapsJs {
                 heading,
                 zoom: 18,
                 center,
-                mapId,
-                disableDefaultUI: true,
-                gestureHandling: "none",
-                keyboardShortcuts: true,
+                mapId
             };
 
             const mapDiv = document.getElementById(elementId);
@@ -152,16 +149,16 @@ export class CustomGoogleMapsJs {
                         const { tilt, heading, zoom } = mapOptions;
                         map.moveCamera({ tilt, heading, zoom });
 
-                        // Rotate the map 360 degrees (animation loop for the map)
-                        if (mapOptions.tilt < 67.5) {
-                            mapOptions.tilt += 0.5;
-                        } else if (mapOptions.heading <= 360) {
-                            mapOptions.heading += 0.2;
-                            mapOptions.zoom -= 0.0005;
-                        } else {
-                            renderer.setAnimationLoop(null); // Stop animation after full rotation
-                        }
-
+                        //// Rotate the map 360 degrees (animation loop for the map)
+                        //if (mapOptions.tilt < 67.5) {
+                        //    mapOptions.tilt += 0.5;
+                        //} else if (mapOptions.heading <= 360) {
+                        //    mapOptions.heading += 0.2;
+                        //    mapOptions.zoom -= 0.0005;
+                        //} else {
+                        //    renderer.setAnimationLoop(null); // Stop animation after full rotation
+                        //}
+                        renderer.setAnimationLoop(null);
                         renderer.render(scene, camera);
                         renderer.resetState();
                     });

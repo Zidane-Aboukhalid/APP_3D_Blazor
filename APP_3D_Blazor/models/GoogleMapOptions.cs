@@ -2,9 +2,9 @@
 
 public record GoogleMapOptions2D(
 	 string elementId,
-	 string mapId,
 	GoogleMapCoordinate2D center,
 	 double zoom,
+	 string ? mapId = null ,
 	 object ? controls=null
 	);
 
