@@ -22,7 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Update="Pages\Google_Map_v2.razor">
+	  <Content Update="Pages\Google_Map_3d.razor">
 	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 	  </Content>
 	</ItemGroup>

@@ -21,14 +21,6 @@ public static class Extensions
         };
         return jSRuntime.InvokeVoidAsync("CustomGoogleMapsJs.LoadMapsApi", jsConfig);
     }
-    public static ValueTask InitGoogleMaps2DAsync(this IJSRuntime jSRuntime, GoogleMapOptions2D mapOptions)
-    {
-        return jSRuntime.InvokeVoidAsync("CustomGoogleMapsJs.initMapa2Dsync", mapOptions);
-    }
-    public static ValueTask InitGoogleMaps3DAsync(this IJSRuntime jSRuntime, GoogleMapOptions3D mapOptions)
-    {
-        return jSRuntime.InvokeVoidAsync("CustomGoogleMapsJs.initMapa3Dsync", mapOptions);
-    }
 	public static ValueTask InitGoogleMaps3D_V2Async(this IJSRuntime jSRuntime, GoogleMapOptions3D mapOptions)
 	{
 		return jSRuntime.InvokeVoidAsync("CustomGoogleMapsJs.initMapa3D_V2sync", mapOptions);
