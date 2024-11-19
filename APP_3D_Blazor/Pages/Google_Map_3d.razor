@@ -1,4 +1,4 @@
-﻿@page "/Google_Map_v2"
+﻿@page "/Google_Map_3d"
 @using APP_3D_Blazor.Helper
 @using APP_3D_Blazor.models
 @inject IJSRuntime JS
@@ -24,7 +24,7 @@
 					ApiKey = "AIzaSyD5J_bnYecGUThFP6ULtzE07LncgMCXpIk",
 					Version = "weekly"
 			});
-			await JS.InitGoogleMaps3D_V2Async(new GoogleMapOptions3D(
+			await JS.InitGoogleMaps3D_Async(new GoogleMapOptions3D(
 				ElementId: Element3DId,
 				MapId: "15431d2b469f209e",
 				Center: new GoogleMapCoordinate3D(33.5906703, -7.6365182, 0),

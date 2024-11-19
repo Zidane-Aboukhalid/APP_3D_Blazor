@@ -40,65 +40,8 @@ export class CustomGoogleMapsJs {
         });
     }
 
-    static async initMapa3Dsync({ elementId, mapId, center, heading, tilt, defaultLabelsDisabled }) {
-        try {
-
-            const { Map3DElement, Model3DElement } = await google.maps.importLibrary("maps3d");
-            const map = new Map3DElement({
-                center: center,
-                heading: heading,
-                tilt: tilt,
-                defaultLabelsDisabled: defaultLabelsDisabled,
-            });
-
-            document.getElementById(elementId).append(map);
-
-            const models = [
-                // Basic model setup
-                {
-                    position: { lat: 33.5903311, lng: - 7.6376218, altitude: 216 },
-                    orientation: { tilt: -90},
-                    scale: 1,
-                }
-            ];
-
-            for (const { position, orientation, scale } of models) {
-                const model = new Model3DElement({
-                    src: '/models_Object3d/office.glb',
-                    position,
-                    orientation,
-                    scale,
-                });
-
-                map.append(model);
-            }
-        } catch (error) {
-            console.error("Error initializing map or models:", error);
-        }
-    }
-    static map;
-    static async initMapa2Dsync({ elementId, mapId, center, zoom, controls }) {
-            
-            const position = { lat: -25.344, lng: 131.031 };
-            const { Map } = await google.maps.importLibrary("maps");
-            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-
-            this.map = new Map(document.getElementById(elementId), {
-                center,
-                zoom,
-                mapId,
-                ...controls
-            });
-
-            const marker = new AdvancedMarkerElement({
-                map: this.map,
-                position: position,
-                title: "Uluru",
-            });
-    }
-
     //loading google maps v2 
-    static async initMapa3D_V2sync({ elementId, mapId, center, heading, tilt, defaultLabelsDisabled }) {
+    static async initMapa3DAsync({ elementId, mapId, center, heading, tilt, defaultLabelsDisabled }) {
         try {
             const { Map } = await google.maps.importLibrary("maps");
 
