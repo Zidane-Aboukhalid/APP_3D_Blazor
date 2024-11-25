@@ -11,8 +11,7 @@
 
 @code {
 	[Parameter]
-	public string Element3DId { get; set; } = "map";
-
+	public string Element3DId { get; set; } = "map_"+Guid.NewGuid();
 
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
@@ -21,12 +20,12 @@
 			await JS.ImportCustormGoogeleMapsJsAsync();
 			await JS.LoadGooglemapsApiAsync(new GoogleMapsLoadConfig
 			{
-					ApiKey = "AIzxxxxxxxxxxxxxxCXpIk",
+					ApiKey = "AIzaSyD5J_bnYecGUThFP6ULtzE07LncgMCXpIk",
 					Version = "weekly"
 			});
 			await JS.InitGoogleMaps3D_Async(new GoogleMapOptions3D(
 				ElementId: Element3DId,
-				MapId: "1543xxxxxxxxx09e",
+				MapId: "15431d2b469f209e",
 				Center: new GoogleMapCoordinate3D(33.5906703, -7.6365182, 0),
 				heading: 0,
 				tilt: 0,
