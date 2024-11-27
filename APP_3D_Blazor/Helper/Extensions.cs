@@ -19,10 +19,10 @@ public static class Extensions
             language = config.Language,
             region = config.Region
         };
-        return jSRuntime.InvokeVoidAsync("CustomGoogleMapsJs.LoadMapsApi", jsConfig);
+        return jSRuntime.InvokeVoidAsync("LoadMapsApi", jsConfig);
     }
 	public static ValueTask InitGoogleMaps3D_Async(this IJSRuntime jSRuntime, GoogleMapOptions3D mapOptions)
 	{
-		return jSRuntime.InvokeVoidAsync("CustomGoogleMapsJs.initMapa3DAsync", mapOptions);
+		return jSRuntime.InvokeVoidAsync("initMapa3DAsync", mapOptions);
 	}
 }
