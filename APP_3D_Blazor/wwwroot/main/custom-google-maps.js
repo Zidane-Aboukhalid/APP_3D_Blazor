@@ -53,16 +53,12 @@ window.LoadMapsApi = async function ({ apikey, version, libraries, language, reg
 window.initMapa3DAsync = async function ({ elementId, mapId, center, heading, tilt, defaultLabelsDisabled }) {
     try {
         const { Map } = await google.maps.importLibrary("maps");
-
         const mapOptions = {
             tilt,
             heading,
             zoom: 18,
             center,
-            mapId,
-            disableDefaultUI: false,
-            gestureHandling: "none",
-            keyboardShortcuts: false,
+            mapId
         };
 
         const mapDiv = document.getElementById(elementId);
@@ -73,7 +69,7 @@ window.initMapa3DAsync = async function ({ elementId, mapId, center, heading, ti
         webglOverlayView.onAdd = () => initializeScene();
         webglOverlayView.onContextRestored = ({ gl }) => setupRenderer(gl, mapDiv, webglOverlayView);
         webglOverlayView.onDraw = ({ transformer }) => drawScene(transformer, center);
-
+       
         webglOverlayView.setMap(map);
     } catch (error) {
         console.error("Error initializing map or models:", error);
@@ -123,21 +119,14 @@ function setupRenderer(gl, mapDiv, webglOverlayView) {
         context: gl,
         ...gl.getContextAttributes(),
     });
+
     renderer.autoClear = false;
     renderer.domElement.addEventListener('click', onMouseClick);
     renderer.domElement.parentNode.style.zIndex = "1000000";
-    // Initialize OrbitControls for camera control
-    // Controls setup
-    controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.enableZoom = true;
-    controls.maxPolarAngle = Math.PI / 2;
-    controls.autoRotate = false;
 
     renderer.setAnimationLoop(() => {
         webglOverlayView.requestRedraw();
         renderer.render(scene, camera);
-        controls.update();
         renderer.resetState();
         console.log("camera position : " + "x : " + camera.position.x + "y : " + camera.position.y +"z : "+camera.position.z)
     });
@@ -155,6 +144,7 @@ function drawScene(transformer, center) {
     renderer.resetState();
 }
 
+// Evenmant click Problem 
 function onMouseClick(event) {
     if (!raycaster || !camera || !scene) return;
 
@@ -172,19 +162,8 @@ function onMouseClick(event) {
         if (object.userData.isClickable) {
             console.log("Clicked on 3D object:", object);
             alert("You clicked a 3D model!");
-        }
+        }           
     } else {
         console.log("No object intersected");
     }
 }
-//renderer.domElement.addEventListener('click', onMouseClick);
-
-//// Export only necessary functions if required
-//export {
-//    loadMapsApi,
-//    initMapa3DAsync,
-//    onMouseClick
-//};
-
-//window.loadMapsApi = loadMapsApi;
-//window.initMapa3DAsync = initMapa3DAsync;
