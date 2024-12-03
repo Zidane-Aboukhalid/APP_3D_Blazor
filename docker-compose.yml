@@ -4,5 +4,8 @@ services:
     build:
       context: APP_3D_Blazor
       dockerfile: Dockerfile
+    ports:
+      - "8081:80"
+      - "8443:443"
     volumes:
       - ./certificates:/app/certificates
