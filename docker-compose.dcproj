@@ -4,7 +4,7 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <DockerPublishLocally>False</DockerPublishLocally>
-    <ProjectGuid>39d82361-a443-4256-90a6-ac6372d8531b</ProjectGuid>
+    <ProjectGuid>ef03ef46-5d53-4898-880f-a65b3e10f793</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>app_3d_blazor</DockerServiceName>

@@ -11,10 +11,10 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["APP_3D_Blazor/APP_3D_Blazor.csproj", "APP_3D_Blazor/"]
-RUN dotnet restore "./APP_3D_Blazor/APP_3D_Blazor.csproj"
+COPY ["APP_3D_Blazor.csproj", "."]
+RUN dotnet restore "./APP_3D_Blazor.csproj"
 COPY . .
-WORKDIR "/src/APP_3D_Blazor"
+WORKDIR "/src/."
 RUN dotnet build "./APP_3D_Blazor.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage

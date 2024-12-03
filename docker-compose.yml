@@ -2,10 +2,5 @@ services:
   app_3d_blazor:
     image: ${DOCKER_REGISTRY-}app3dblazor
     build:
-      context: .
-      dockerfile: APP_3D_Blazor/Dockerfile
-    ports:
-      - "5000:5000" # Port HTTP
-      - "5001:5001" # Port HTTPS
-    volumes:
-      - ./models_Object3d:/app/models_Object3d
+      context: APP_3D_Blazor
+      dockerfile: Dockerfile
