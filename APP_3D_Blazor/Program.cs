@@ -21,15 +21,22 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Serve static files
-app.UseStaticFiles(new StaticFileOptions
+var staticFilePath = Path.Combine(builder.Environment.ContentRootPath, "models_Object3d");
+
+if (Directory.Exists(staticFilePath))
 {
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(builder.Environment.ContentRootPath, "models_Object3d")),
-    RequestPath = "/models_Object3d",
-    ServeUnknownFileTypes = true,
-    DefaultContentType = "application/octet-stream",
-});
+	app.UseStaticFiles(new StaticFileOptions
+	{
+		FileProvider = new PhysicalFileProvider(staticFilePath),
+		RequestPath = "/models_Object3d",
+		ServeUnknownFileTypes = true,
+		DefaultContentType = "application/octet-stream",
+	});
+}
+else
+{
+	Console.WriteLine("Warning: Directory models_Object3d does not exist. Static file serving skipped.");
+}
 app.UseStaticFiles();
 app.UseRouting();
 
