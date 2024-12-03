@@ -28,8 +28,9 @@ if (Directory.Exists(staticFilePath))
 {
 	// Define MIME types if needed
 	var contentTypeProvider = new FileExtensionContentTypeProvider();
-	contentTypeProvider.Mappings[".obj"] = "application/x-tgif"; // Example for .obj files
-	contentTypeProvider.Mappings[".mtl"] = "application/x-tgif"; // Example for .mtl files
+	contentTypeProvider.Mappings[".glb"] = "application/x-tgif"; 
+	contentTypeProvider.Mappings[".gltf"] = "application/x-tgif"; 
+	contentTypeProvider.Mappings[".fbx"] = "application/x-tgif";
 
 	// Serve static files from the directory
 	app.UseStaticFiles(new StaticFileOptions

@@ -128,7 +128,6 @@ function setupRenderer(gl, mapDiv, webglOverlayView) {
         webglOverlayView.requestRedraw();
         renderer.render(scene, camera);
         renderer.resetState();
-        console.log("camera position : " + "x : " + camera.position.x + "y : " + camera.position.y +"z : "+camera.position.z)
     });
 }
 
