@@ -43,5 +43,5 @@ app.UseRouting();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
-
+// add commit test 
 app.Run();
