@@ -26,6 +26,7 @@ pipeline {
 
         stage('Build and Run Docker Compose') {
             steps {
+                sh "docker-compose -f $DOCKER_COMPOSE_PATH down"
                 sh "docker-compose -f $DOCKER_COMPOSE_PATH up -d"
             }
         }
