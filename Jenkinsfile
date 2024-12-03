@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('checkout code ') {
       steps {
-        git(url: 'https://github.com/Zidane-Aboukhalid/APP_3D_Blazor', branch: 'main')
+        git(url: 'https://github.com/Zidane-Aboukhalid/APP_3D_Blazor', branch: 'master')
       }
     }
 
