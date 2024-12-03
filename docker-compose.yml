@@ -4,3 +4,6 @@ services:
     build:
       context: APP_3D_Blazor
       dockerfile: Dockerfile
+    ports:
+      - "5000:5000" # Port HTTP
+      - "5001:5001" # Port HTTPS
