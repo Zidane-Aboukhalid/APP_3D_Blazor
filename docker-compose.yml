@@ -1,0 +1,6 @@
+services:
+  app_3d_blazor:
+    image: ${DOCKER_REGISTRY-}app3dblazor
+    build:
+      context: .
+      dockerfile: APP_3D_Blazor/Dockerfile
