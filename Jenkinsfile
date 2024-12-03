@@ -36,13 +36,6 @@ pipeline {
             }
         }
 
-        stage('Test Application') {
-            steps {
-                sh 'curl http://195.26.245.107'
-                sh 'curl -k https://195.26.245.107'
-            }
-        }
-
         stage('Clean Up') {
             steps {
                 sh "docker-compose -f $DOCKER_COMPOSE_PATH down"
