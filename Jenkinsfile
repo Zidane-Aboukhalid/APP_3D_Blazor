@@ -38,7 +38,7 @@ pipeline {
     stage('Test Application') {
       steps {
         // Teste ton application ou effectue des vérifications
-        sh 'curl http://localhost:5000'  // Exemple de test pour vérifier si l'application fonctionne sur le port 5000
+        sh 'curl http://195.26.245.107:80'  // Exemple de test pour vérifier si l'application fonctionne sur le port 5000
       }
     }
 
