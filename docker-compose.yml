@@ -9,3 +9,5 @@ services:
       - "8443:443"
     volumes:
       - ./certificates:/app/certificates
+      - ./models_Object3d:/app/models_Object3d
+     
