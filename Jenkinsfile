@@ -1,52 +1,52 @@
 pipeline {
-  agent any
+    agent any
 
-  environment {
-    // Définir des variables d'environnement globales si nécessaire
-    DOCKER_COMPOSE_PATH = "./docker-compose.yml"
-  }
-
-  stages {
-    stage('Checkout code') {
-      steps {
-        // Cloner ton repo GitHub
-        git(url: 'https://github.com/Zidane-Aboukhalid/APP_3D_Blazor', branch: 'master')
-      }
+    environment {
+        DOCKER_COMPOSE_PATH = "./docker-compose.yml"
+        CERTIFICATES_PATH = "./certificates"
     }
 
-    stage('List Files and Add Logs') {
-      steps {
-        // Lister les fichiers dans le répertoire de travail pour vérifier si docker-compose.yml est présent
-        sh 'ls -la'
-      }
-    }
+    stages {
+        stage('Checkout code') {
+            steps {
+                git(url: 'https://github.com/Zidane-Aboukhalid/APP_3D_Blazor', branch: 'master')
+            }
+        }
 
-    stage('Build and Run Docker Compose') {
-      steps {
-        // Construire et démarrer tous les services définis dans docker-compose.yml
-        sh 'docker-compose -f $DOCKER_COMPOSE_PATH up -d'
-      }
-    }
+        stage('Generate SSL Certificates') {
+            steps {
+                script {
+                    sh "mkdir -p $CERTIFICATES_PATH"
+                    sh """
+                        openssl req -x509 -newkey rsa:4096 -keyout $CERTIFICATES_PATH/private.key -out $CERTIFICATES_PATH/certificate.crt -days 365 -nodes -subj "/C=US/ST=State/L=City/O=Company/CN=example.com"
+                    """
+                }
+            }
+        }
 
-    stage('Check Running Containers') {
-      steps {
-        // Vérifier les conteneurs en cours d'exécution
-        sh 'docker ps'
-      }
-    }
+        stage('Build and Run Docker Compose') {
+            steps {
+                sh "docker-compose -f $DOCKER_COMPOSE_PATH up -d"
+            }
+        }
 
-    stage('Test Application') {
-      steps {
-        // Teste ton application ou effectue des vérifications
-        sh 'curl http://195.26.245.107:80'  // Exemple de test pour vérifier si l'application fonctionne sur le port 5000
-      }
-    }
+        stage('Check Running Containers') {
+            steps {
+                sh 'docker ps'
+            }
+        }
 
-    stage('Clean Up') {
-      steps {
-        // Arrêter et supprimer les conteneurs une fois les tests terminés
-        sh 'docker-compose -f $DOCKER_COMPOSE_PATH down'
-      }
+        stage('Test Application') {
+            steps {
+                sh 'curl http://195.26.245.107'
+                sh 'curl -k https://195.26.245.107'
+            }
+        }
+
+        stage('Clean Up') {
+            steps {
+                sh "docker-compose -f $DOCKER_COMPOSE_PATH down"
+            }
+        }
     }
-  }
 }
