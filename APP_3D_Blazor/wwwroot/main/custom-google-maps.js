@@ -166,4 +166,3 @@ function onMouseClick(event) {
         console.log("No object intersected");
     }
 }
-// fin code 
