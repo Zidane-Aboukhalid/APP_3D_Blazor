@@ -35,11 +35,5 @@ pipeline {
                 sh 'docker ps'
             }
         }
-
-        stage('Clean Up') {
-            steps {
-                sh "docker-compose -f $DOCKER_COMPOSE_PATH down"
-            }
-        }
     }
 }
